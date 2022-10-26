@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Session;
 
 
 if (!function_exists('alert')) {
-    function alert($color,$text): void
+    /**
+     * Puts alert message with bootstrap color
+     *
+     * @param $color
+     * @param $text
+     * @return void
+     */
+    function alert($color, $text): void
     {
         Session::forget('alert');
         Session::push('alert',['color' => $color,'text' => $text]);
@@ -21,6 +28,9 @@ if (!function_exists('alert')) {
 }
 
 if (!function_exists('reset_db')) {
+    /**
+     * @return void
+     */
     function reset_db(): void
     {
         Artisan::call('db:wipe');
