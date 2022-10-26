@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
+
 
 class ItemsController extends Controller
 {
@@ -109,9 +107,7 @@ class ItemsController extends Controller
     }
     public function reset() {
 
-        Artisan::call('db:wipe');
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
+        reset_db();
 
         alert('success','Database is reset');
 

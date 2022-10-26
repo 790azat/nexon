@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\User;
 use Eloquent;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -214,9 +215,9 @@ class DatabaseSeeder extends Seeder
         }
 
         $user = new User;
-        $user->name = env('ADMIN_NAME');
-        $user->email = env('ADMIN_EMAIL');
-        $user->password = Hash::make(env('ADMIN_PASSWORD'));
+        $user->name = Config::get('admin.name');
+        $user->email = Config::get('admin.email');
+        $user->password = Config::get('admin.password');
         $user->is_admin = 1;
         $user->save();
     }
