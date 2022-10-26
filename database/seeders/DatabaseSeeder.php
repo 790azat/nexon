@@ -6,7 +6,6 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\User;
-use Eloquent;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -22,8 +21,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        \App\Models\User::factory(10)->create();
-//        Category::factory(5)->create();
 
         $categories = [
             ['name' => 'Հեռախոսներ','icon' => 'phone'],
@@ -33,15 +30,9 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Աքսեսուարներ','icon' => 'earbuds']
         ];
 
-        for ($i = 0;$i <= 4;$i++) {
-            Category::create([
-                'name' => $categories[$i]['name'],
-                'icon' => $categories[$i]['icon']
-            ]);
-        }
+        Category::insert($categories);
 
-
-        $items = json_decode(json_encode(array(
+        $items = array(
             array('id' => '1','name' => 'Պլանշետ DIGMA PLANE 7594 3G PS7210PG 7 ','price' => '37900 ','item_description' => 'I\'ve got back to yesterday, because I was a little bottle that stood near the looking-glass. There was a little house in it a violent blow underneath her chin: it had grown in the other. \'I beg.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/T/B/TB-0000739.jpg','category_id' => '2','created_at' => '2022-10-22 23:21:02','updated_at' => '2022-10-22 23:21:02'),
             array('id' => '2','name' => 'Պլանշետ DIGMA PLANE 8595 3G PS8212PG 8 ','price' => '47400 ','item_description' => 'Rabbit\'s voice; and Alice looked down at her with large eyes like a thunderstorm. \'A fine day, your Majesty!\' the soldiers remaining behind to execute the unfortunate gardeners, who ran to Alice.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/p/s/ps8212pg.jpgs.jpg','category_id' => '2','created_at' => '2022-10-22 23:21:02','updated_at' => '2022-10-22 23:21:02'),
             array('id' => '3','name' => 'Պլանշետ DIGMA CITI 8589 3G PS8206MG 8 ','price' => '47400 ','item_description' => 'Majesty,\' said Two, in a very poor speaker,\' said the Mock Turtle. \'And how many miles I\'ve fallen by this time?\' she said to the end: then stop.\' These were the verses to himself: \'"WE KNOW IT TO.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/g/g/ggkgkkyyyotto.jpgs.jpg','category_id' => '2','created_at' => '2022-10-22 23:21:02','updated_at' => '2022-10-22 23:21:02'),
@@ -202,23 +193,14 @@ class DatabaseSeeder extends Seeder
             array('id' => '158','name' => 'Ականջակալ OKLICK BT-S-150 E714BT ','price' => '4800 ','item_description' => 'Alice thought this must ever be A secret, kept from all the party were placed along the passage into the darkness as hard as he spoke, and then they both sat silent for a long breath, and said.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/H/S/HS-0000968.jpg','category_id' => '5','created_at' => '2022-10-22 23:29:48','updated_at' => '2022-10-22 23:29:48'),
             array('id' => '159','name' => 'Ականջակալ OKLICK BT-S-155 E716BT ','price' => '5400 ','item_description' => 'Trims his belt and his buttons, and turns out his toes.\' [later editions continued as follows The Panther took pie-crust, and gravy, and meat, While the Owl and the White Rabbit, trotting slowly.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/H/S/HS-0000969.jpg','category_id' => '5','created_at' => '2022-10-22 23:29:48','updated_at' => '2022-10-22 23:29:48'),
             array('id' => '160','name' => 'Ականջակալ PIONEER SE-C4BT-B ','price' => '13200 ','item_description' => 'It was high time to hear his history. I must have prizes.\' \'But who is to France-- Then turn not pale, beloved snail, but come and join the dance? Will you, won\'t you join the dance. Would not.','image' => 'https://nout.am/media/catalog/product/cache/8af80102c483d066749fb436211e8698/H/S/HS-0001035.jpg','category_id' => '5','created_at' => '2022-10-22 23:29:48','updated_at' => '2022-10-22 23:29:48')
-        )));
+        );
 
-        foreach ($items as $item) {
-            Item::create([
-                'name' => $item->name,
-                'price' => $item->price,
-                'item_description' => $item->item_description,
-                'image' => $item->image,
-                'category_id' => $item->category_id
-            ]);
-        }
+        Item::insert($items);
 
-        $user = new User;
-        $user->name = Config::get('admin.name');
-        $user->email = Config::get('admin.email');
-        $user->password = Config::get('admin.password');
-        $user->is_admin = 1;
-        $user->save();
+        User::create([
+            ...config('admin'),
+            "is_admin"=>  1,
+            "password" => Hash::make(config('admin.password'))
+        ]);
     }
 }

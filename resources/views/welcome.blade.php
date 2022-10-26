@@ -63,7 +63,7 @@
                                     <p class="text-center fs-5 fw-bold" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;">{{$item->name}}</p>
                                 </div>
                                 <div class="col-12 pb-2 mt-auto">
-                                    <p class="text-center">{{$item->price}} դրամ</p>
+                                    <p class="text-center">{{number_format(intval($item->price),2,'.',',') . ' ֏'}} դրամ</p>
                                 </div>
                                 <div class="col-12 pb-3 d-flex justify-content-center">
                                     <button class="btn btn-success py-1 px-3">Ավելացնել</button>
