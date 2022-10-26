@@ -49,8 +49,7 @@ class ItemsController extends Controller
             $request->file('image')->storeAs('images',time() . '-image-' . $request->file('image')->getClientOriginalName(),'public');
         }
 
-        Session::forget('alert');
-        Session::push('alert',['color' => 'success','text' => 'Item: ' . $request->name . ' is saved.']);
+        alert('success','Item: ' . $request->name . ' is saved.');
 
         return redirect('admin');
     }
@@ -61,8 +60,7 @@ class ItemsController extends Controller
             'icon' => $request->icon
         ]);
 
-        Session::forget('alert');
-        Session::push('alert',['color' => 'success','text' => 'Category: ' . $request->name . ' is saved.']);
+        alert('success','Category: ' . $request->name . ' is saved.');
 
         return redirect('edit-categories');
     }
@@ -72,8 +70,7 @@ class ItemsController extends Controller
 
         $item->delete();
 
-        Session::forget('alert');
-        Session::push('alert',['color' => 'danger','text' => 'Item: ' . $item->name . ' is deleted.']);
+        alert('danger','Item: ' . $item->name . ' is deleted.');
 
         return redirect('admin');
 
@@ -84,8 +81,7 @@ class ItemsController extends Controller
 
         $category->delete();
 
-        Session::forget('alert');
-        Session::push('alert',['color' => 'danger','text' => 'Category: ' . $category->name . ' is deleted.']);
+        alert('danger','Category: ' . $category->name . ' is deleted.');
 
         return redirect('edit-categories');
 
@@ -103,8 +99,7 @@ class ItemsController extends Controller
 
         $item->save();
 
-        Session::forget('alert');
-        Session::push('alert',['color' => 'warning','text' => 'Item: ' . $request->name . ' is edited.']);
+        alert('warning','Item: ' . $request->name . ' is edited.');
 
         return redirect('admin');
     }
