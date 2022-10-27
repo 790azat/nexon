@@ -5,6 +5,7 @@
  */
 
 import './bootstrap';
+import './admin-js/scripts'
 import { createApp } from 'vue';
 
 /**
