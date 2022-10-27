@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuyController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ParserController;
 use App\Http\Middleware\IsAdmin;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [ItemsController::class, 'show_all'])->name('welcome');
 
     Route::get('item/{id}', [ItemsController::class, 'show_item']);
+
+    Route::get('/buy',[BuyController::class,'buy'])->name('buy');
 
 Route::middleware([IsAdmin::class])->group(function () {
 
