@@ -28,6 +28,7 @@
                     <p class="lead">{{$item->item_description}}</p>
                     <form action="/buy" class="d-flex mt-2">
                         @csrf
+                        <input type="text" value="{{$item->id}}" class="d-none" name="id">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" name="quantity" />
                         <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>

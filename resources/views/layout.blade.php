@@ -42,7 +42,7 @@
                             {{Auth::user()->name}}
                         </button>
                         <ul class="dropdown-menu">
-                            @if(\Illuminate\Support\Facades\Route::is('welcome'))
+                            @if(\Illuminate\Support\Facades\Route::is('welcome') and \App\Models\User::)
                                 <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                             @endif
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
