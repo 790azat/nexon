@@ -54,14 +54,14 @@
             <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 justify-content-start">
                 @foreach($items as $item)
                     <div class="col p-2 d-flex">
-                        <a href="item/{{$item->id}}" class="shadow d-block rounded-1 overflow-hidden card-hover">
-                            <div class="col-12 d-flex justify-content-start">
+                        <div class="shadow d-block rounded-1 overflow-hidden card-hover">
+                            <a href="item/{{$item->id}}" class="col-12 d-flex justify-content-start">
                                 <img src="{{$item->image}}" style="width: 100%;object-fit: cover" alt="">
-                            </div>
+                            </a>
                             <div class="d-flex flex-wrap">
-                                <div class="col-12 pt-2 px-3 mb-auto">
-                                    <p class="text-center fs-5 fw-bold" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;">{{$item->name}}</p>
-                                </div>
+                                <a href="item/{{$item->id}}" class="col-12 pt-2 px-3 mb-auto">
+                                    <p class="text-center fs-5 fw-bold text-hover" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;">{{$item->name}}</p>
+                                </a>
                                 <div class="col-12 pb-2 mt-auto">
                                     <p class="text-center">{{number_format(intval($item->price),2,'.',',') . ' ֏'}} դրամ</p>
                                 </div>
@@ -69,7 +69,7 @@
                                     <button class="btn btn-success py-1 px-3">Ավելացնել</button>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

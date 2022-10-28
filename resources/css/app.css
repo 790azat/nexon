@@ -6,6 +6,9 @@ a {
 p {
     margin: 0 !important;
 }
+.text-hover:hover {
+    text-decoration: underline !important;
+}
 .card-hover {
     transition: 0.2s;
 }

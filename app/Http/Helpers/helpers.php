@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 //if (!function_exists('______')) {
@@ -10,6 +11,13 @@ use Illuminate\Support\Facades\Session;
 //
 //    }
 //}
+
+if (!function_exists('isAdmin')) {
+    function isAdmin()
+    {
+        return Auth::user()->is_admin == 1;
+    }
+}
 
 
 if (!function_exists('alert')) {
@@ -22,8 +30,7 @@ if (!function_exists('alert')) {
      */
     function alert($color, $text): void
     {
-        Session::forget('alert');
-        Session::push('alert',['color' => $color,'text' => $text]);
+        Session::flash('alert',['color' => $color,'text' => $text]);
     }
 }
 

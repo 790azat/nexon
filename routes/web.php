@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/buy',[BuyController::class,'buy'])->name('buy');
 
+    Route::post('/card',[BuyController::class,'card']);
+
 Route::middleware([IsAdmin::class])->group(function () {
 
     Route::get('/admin', [ItemsController::class, 'admin'])->name('admin');

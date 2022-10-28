@@ -13,6 +13,10 @@ class BuyController extends Controller
             return redirect('/login');
         }
         $item = Item::find($request->id);
-        return view('buy',['item' => $item]);
+        return view('buy',['item' => $item,'quantity' => $request->quantity]);
+    }
+    public function card(Request $request) {
+
+        dd($request->all());
     }
 }

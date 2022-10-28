@@ -36,13 +36,16 @@
             </a>
 
             @if(Auth::check())
-                <div class="ms-auto">
+                <div class="ms-auto fs-4">
+                    <i class="bi bi-cart3"></i>
+                </div>
+                <div class="ms-3">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{Auth::user()->name}}
                         </button>
                         <ul class="dropdown-menu">
-                            @if(\Illuminate\Support\Facades\Route::is('welcome') and \App\Models\User::)
+                            @if(\Illuminate\Support\Facades\Route::is('welcome') and isAdmin())
                                 <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                             @endif
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

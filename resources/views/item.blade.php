@@ -13,20 +13,19 @@
                     </ol>
                 </nav>
             </div>
-            <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6 d-flex flex-wrap">
-                    <img class="col-12 card-img-top mb-5 mb-md-0" src="{{$item->image}}" alt="..." />
+            <div class="row gx-4 gx-lg-5 d-flex justify-content-center align-items-start">
+                <div class="col-md-5 d-flex flex-wrap">
+                    <img class="col-12 shadow card-img-top mb-5 mb-md-0" src="{{$item->image}}" alt="..." />
                 </div>
 
                 <div class="col-md-6">
-                    <div class="small mb-1">SKU: BST-498</div>
+                    <div class="small mb-1">SKU: {{$item->id}}</div>
                     <h1 class="display-5 fw-bolder">{{$item->name}}</h1>
-                    <div class="fs-5 mb-5">
+                    <div class="fs-5 mb-3">
 {{--                        <span class="text-decoration-line-through">$45.00</span>--}}
                         <span><span class="badge bg-success">{{number_format(intval($item->price),2,'.',',')}}</span>{{' ֏'}} դրամ</span>
                     </div>
-                    <p class="lead">{{$item->item_description}}</p>
-                    <form action="/buy" class="d-flex mt-2">
+                    <form action="/buy" method="get" class="d-flex mb-3">
                         @csrf
                         <input type="text" value="{{$item->id}}" class="d-none" name="id">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" name="quantity" />
@@ -35,6 +34,7 @@
                             Գնել
                         </button>
                     </form>
+                    <p class="lead">{{$item->item_description}}</p>
                 </div>
             </div>
         </div>
