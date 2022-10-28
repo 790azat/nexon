@@ -66,7 +66,16 @@
                                     <p class="text-center">{{number_format(intval($item->price),2,'.',',') . ' ֏'}} դրամ</p>
                                 </div>
                                 <div class="col-12 pb-3 d-flex justify-content-center">
-                                    <button class="btn btn-success py-1 px-3">Ավելացնել</button>
+{{--                                    <button  class="btn btn-success py-1 px-3">Ավելացնել</button>--}}
+                                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" value="{{ $item->id }}" name="id">
+                                        <input type="hidden" value="{{ $item->name }}" name="name">
+                                        <input type="hidden" value="{{ $item->price }}" name="price">
+                                        <input type="hidden" value="{{ $item->image }}"  name="image">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Ավելացնել</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

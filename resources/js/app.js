@@ -5,8 +5,10 @@
  */
 
 import './bootstrap';
-import './admin-js/scripts'
+import './admin-js/scripts';
 import { createApp } from 'vue';
+
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin

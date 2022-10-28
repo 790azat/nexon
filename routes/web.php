@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ParserController;
 use App\Http\Middleware\IsAdmin;
@@ -26,6 +27,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('/buy',[BuyController::class,'buy'])->name('buy');
 
     Route::post('/card',[BuyController::class,'card']);
+
+    //Product card routes
+
+    Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+    Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+    Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+    Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 
 Route::middleware([IsAdmin::class])->group(function () {
 

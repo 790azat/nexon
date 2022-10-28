@@ -36,9 +36,10 @@
             </a>
 
             @if(Auth::check())
-                <div class="ms-auto fs-4">
-                    <i class="bi bi-cart3"></i>
-                </div>
+                <a href="/cart" class="ms-auto fs-3 d-flex align-items-center">
+                    <i class="bi bi-cart3"></i><span class="rounded-pill bg-danger text-white fs-6 px-2 mb-1 ms-1" style="position: relative;">{{ Cart::getTotalQuantity()}}</span>
+                </a>
+
                 <div class="ms-3">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,6 +96,8 @@
     @yield('parser')
 
     @yield('buy')
+
+    @yield('cart')
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
