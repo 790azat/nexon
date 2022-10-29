@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -33,9 +34,10 @@ class ItemsController extends Controller
     }
     public function admin() {
 
+        $users = User::simplePaginate(5);
         $categories = Category::all();
         $items = Item::simplePaginate(5);
-        return view('admin',['items' => $items,'categories' => $categories]);
+        return view('admin',['items' => $items,'categories' => $categories,'users' => $users]);
 
     }
     public function save(Request $request) {

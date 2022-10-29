@@ -214,5 +214,38 @@
                 </div>
             </div>
         </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-user me-1"></i>
+                Users table. @isset($_GET['page'])Page: <strong class="badge rounded-pill bg-primary">{{$_GET['page']}}@endisset</strong>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple" class="table table-hover table-bordered align-middle">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Is admin</th>
+                        <th>Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>@if($user->is_admin == 1) <i class="bi bi-person-circle"></i> @endif</td>
+                            <td>{{$user->created_at}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                <div>
+                    {{$users->links()}}
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
