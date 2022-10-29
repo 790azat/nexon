@@ -11,7 +11,8 @@
     </div>
 @endif
 @php
-    Session::forget('alert');
+    session()->forget('alert')
 @endphp
+
 
 

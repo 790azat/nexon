@@ -11,7 +11,7 @@
                             <p>{{$item->name}}</p>
                         </div>
                         <div class="ms-auto fw-bold">
-                            <p id="quantityMultiplicated">{{number_format((intval($item->price) * intval($item->quantity)),2,'.',',') . ' ֏'}}</p>
+                            <p id="quantityMultiplicated" class="text-nowrap">{{number_format((intval($item->price) * intval($item->quantity)),2,'.',',') . ' ֏'}}</p>
                         </div>
                         <div class="ms-3">
                             <button id="addButton{{$item->id}}" class="btn btn-success">+</button>
@@ -32,7 +32,11 @@
                             })
                         </script>
                         <div class="col-auto me-2">
-                            <button class="btn btn-danger">Հեռացնել</button>
+                            <form action="/remove" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$item->id}}">
+                                <button class="btn btn-danger">Հեռացնել</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

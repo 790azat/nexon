@@ -17,6 +17,11 @@ class ItemsController extends Controller
         else
             $items = Item::paginate(12);
 
+        if ($request->has('alert')) {
+            alert('warning','Զամբյուղը դատարկ է');
+            return back();
+        }
+
         $categories = Category::all();
         return view('welcome',['items' => $items,'categories' => $categories]);
     }
@@ -79,7 +84,7 @@ class ItemsController extends Controller
 
         $category->delete();
 
-        alert('danger','Category: ' . $category->name . ' is deleted.');
+        alert('danger','Category is removed');
 
         return redirect('edit-categories');
 

@@ -30,7 +30,8 @@ if (!function_exists('alert')) {
      */
     function alert($color, $text): void
     {
-        Session::flash('alert',['color' => $color,'text' => $text]);
+        Session::forget('alert');
+        Session::push('alert',['color' => $color,'text' => $text]);
     }
 }
 

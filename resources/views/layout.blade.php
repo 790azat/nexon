@@ -8,17 +8,7 @@
         @include('scripts')
         @vite(['resources/sass/app.scss','resources/js/app.js'])
     </head>
-    <body onload="notification()">
-
-
-    <script type="text/javascript">
-        function notification() {
-            const toastLiveExample = document.getElementById('liveToast')
-            const toast = new bootstrap.Toast(toastLiveExample)
-
-            toast.show()
-        }
-    </script>
+    <body @if(session()->get('alert') !== null) onload="$('.toast').toast('show');" @endif>
 
     <!-- Alert -->
     @include('alert')
@@ -35,9 +25,10 @@
                 </div>
             </a>
 
+
             @if(Auth::check())
-                <a href="/cart" class="ms-auto fs-3 d-flex align-items-center">
-                    <i class="bi bi-cart3"></i><span class="rounded-pill bg-danger text-white fs-6 px-2 mb-1 ms-1" style="position: relative;">{{ Cart::getTotalQuantity()}}</span>
+                <a href="@if(Cart::getTotalQuantity() > 0 ) /cart @else ?alert=empty @endif" class="ms-auto fs-3 d-flex align-items-center">
+                    <i class="bi bi-cart3"></i>@if(Cart::getTotalQuantity() > 0)<span class="rounded-pill bg-danger text-white fs-6 px-2 mb-1 ms-1" style="position: relative;">{{ Cart::getTotalQuantity()}}</span>@endif
                 </a>
 
                 <div class="ms-3">

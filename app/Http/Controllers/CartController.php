@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -27,6 +28,10 @@ class CartController extends Controller
         }
 
         $items = json_decode(json_encode($items));
+
+        if ($array == null) {
+            return redirect()->route('welcome');
+        }
 
 
         return view('cart', ['items' => $items]);
@@ -69,7 +74,8 @@ class CartController extends Controller
     public function removeCart(Request $request)
     {
         \Cart::remove($request->id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
+
+        alert('success', 'Ապրանքը հեռացված է');
 
         return redirect()->route('cart.list');
     }
@@ -78,7 +84,7 @@ class CartController extends Controller
     {
         \Cart::clear();
 
-        session()->flash('success', 'All Item Cart Clear Successfully !');
+        alert('success','Բոլոր ապրանքները հեռացված են');
 
         return redirect()->route('cart.list');
     }

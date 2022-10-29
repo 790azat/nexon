@@ -17,7 +17,7 @@
         }
     </style>
 </head>
-<body class="sb-nav-fixed" onload="$('.toast').toast('show');">
+<body class="sb-nav-fixed" @if(session()->get('alert') !== null) onload="$('.toast').toast('show');" @endif>
     @include('alert')
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
