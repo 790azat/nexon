@@ -5,7 +5,7 @@
         <div class="col-8 p-3 shadow d-flex flex-wrap gap-2 justify-content-center" style="background: white">
             <div class="col-12 my-3 d-flex justify-content-center gap-4">
                 <p class="fw-bold text-end">{{$item->name}}</p>
-                <p class="">Քանակ - <span class="badge bg-primary">{{$quantity}}</span></p>
+                <p class="">Քանակ - <span class="badge bg-primary me-2">{{$quantity}}</span>Գին - <span class="badge bg-primary">{{$item->price}}</span></p>
             </div>
             <div class="col-3">
                 <div class="d-flex flex-wrap justify-content-center">
@@ -58,6 +58,7 @@
                                 <input type="text" name="cvv" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" inputmode="numeric" placeholder="CVV" maxlength="3" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                             </div>
                             <div class="col d-flex">
+                                <input type="hidden" name="sum" value="{{$item->price}}">
                                 <input type="submit" class="btn btn-success col-12" value="Վճարել">
                             </div>
                         </div>
