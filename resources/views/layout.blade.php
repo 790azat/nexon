@@ -28,7 +28,9 @@
 
             @if(Auth::check())
                 <a href="@if(Cart::getTotalQuantity() > 0 ) /cart @else ?alert=empty @endif" class="ms-auto fs-3 d-flex align-items-center">
-                    <i class="bi bi-cart3"></i>@if(Cart::getTotalQuantity() > 0)<span class="rounded-pill bg-danger text-white fs-6 px-2 mb-1 ms-1" style="position: relative;">{{ Cart::getTotalQuantity()}}</span>@endif
+                    <button type="button" class="btn btn-outline-secondary position-relative">
+                        <i class="bi bi-cart3" ></i> @if(Cart::getTotalQuantity() > 0)<span class="badge bg-danger m-0 p-1">{{ Cart::getTotalQuantity()}}<span class="visually-hidden">unread messages</span>@endif</span>
+                    </button>
                 </a>
 
                 <div class="ms-3">

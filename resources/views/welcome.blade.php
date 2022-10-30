@@ -60,7 +60,7 @@
                             </a>
                             <div class="d-flex flex-wrap">
                                 <a href="item/{{$item->id}}" class="col-12 pt-2 px-3 mb-auto">
-                                    <p class="text-center fs-5 fw-bold text-hover" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;">{{$item->name}}</p>
+                                    <p class="text-center fs-5 fw-bold text-hover text-truncate mx-3" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;">{{$item->name}}</p>
                                 </a>
                                 <div class="col-12 pb-2 mt-auto">
                                     <p class="text-center">{{number_format(intval($item->price),2,'.',',') . ' ֏'}} դրամ</p>
