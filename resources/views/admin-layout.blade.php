@@ -37,10 +37,15 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{Auth::user()->name}}</a>
+            <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2 border rounded py-1" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://avatars.dicebear.com/api/bottts/{{Auth::user()->name}}0.svg" style="width: 30px" alt="">
+                {{Auth::user()->name}}
+            </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Log out</a></li>
+                <li>
+                    <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left me-1"></i> Log out</a>
+                </li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
@@ -68,17 +73,15 @@
                     </a>
                 </div>
             </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                {{Auth::user()->name}}
+            <div class="sb-sidenav-footer d-inline-flex align-items-center gap-3">
+                <img src="https://avatars.dicebear.com/api/bottts/{{Auth::user()->name}}0.svg" style="width: 40px" alt="">
+                <div class="small">Logged in as: {{Auth::user()->name}}</div>
             </div>
         </nav>
     </div>
     <div id="layoutSidenav_content">
         <main>
-            @yield('admin')
-            @yield('edit-categories')
-            @yield('parser')
+            @yield('content')
         </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">

@@ -26,33 +26,75 @@
             </a>
 
 
-            @if(Auth::check())
-                <a href="@if(Cart::getTotalQuantity() > 0 ) /cart @else ?alert=empty @endif" class="ms-auto fs-3 d-flex align-items-center">
-                    <button type="button" class="btn btn-outline-secondary position-relative">
-                        <i class="bi bi-cart3" ></i> @if(Cart::getTotalQuantity() > 0)<span class="badge bg-danger m-0 p-1">{{ Cart::getTotalQuantity()}}<span class="visually-hidden">unread messages</span>@endif</span>
-                    </button>
-                </a>
+            @if(\Illuminate\Support\Facades\Route::currentRouteName() !== 'welcome')
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
 
-                <div class="ms-3">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{Auth::user()->name}}
-                        </button>
-                        <ul class="dropdown-menu">
-                            @if(\Illuminate\Support\Facades\Route::is('welcome') and isAdmin())
-                                <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
-                            @endif
-                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Log out</a></li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </ul>
-                    </div>
-                </div>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             @else
-                <a class="btn btn-outline-secondary ms-auto" href="{{ route('home') }}">Login / Register</a>
+                @if(Auth::check())
+                    <a href="@if(Cart::getTotalQuantity() > 0 ) /cart @else ?alert=empty @endif" class="ms-auto fs-3 d-flex align-items-center">
+                        <button type="button" class="btn btn-outline-secondary position-relative">
+                            <i class="bi bi-cart3" ></i> @if(Cart::getTotalQuantity() > 0)<span class="badge bg-danger m-0 p-1">{{ Cart::getTotalQuantity()}}<span class="visually-hidden">unread messages</span>@endif</span>
+                        </button>
+                    </a>
+
+                    <div class="ms-3">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle d-inline-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-inline-flex">
+                                    <img src="https://avatars.dicebear.com/api/bottts/{{Auth::user()->name}}0.svg" style="width: 20px" alt="">
+                                </div>
+                                {{Auth::user()->name}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                @if(\Illuminate\Support\Facades\Route::is('welcome') and isAdmin())
+                                    <li><a class="dropdown-item" href="/admin"><i class="bi bi-speedometer me-1"></i> Admin panel</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left me-1"></i> Log out</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                @else
+                    <a class="btn btn-outline-secondary ms-auto" href="{{ route('home') }}">Login / Register</a>
+                @endif
             @endif
+
+
 
             <div class="col-auto ms-4">
                 <a href="/" class="me-2">
@@ -74,23 +116,7 @@
         </div>
     </nav>
 
-    @yield('monster')
-
-    @yield('items')
-
-    @yield('item')
-
-    @yield('admin')
-
-    @yield('add')
-
-    @yield('edit-categories')
-
-    @yield('parser')
-
-    @yield('buy')
-
-    @yield('cart')
+    @yield('content')
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">

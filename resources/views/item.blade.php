@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('item')
+@section('content')
     <!-- Product section-->
     <section class="pt-0 pb-2">
         <div class="container px-4 px-lg-5 my-5 mt-4">

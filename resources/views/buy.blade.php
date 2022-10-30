@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('buy')
+@section('content')
     <div class="container d-flex justify-content-center my-5">
         <div class="col-8 p-3 shadow d-flex flex-wrap gap-2 justify-content-center" style="background: white">
             <div class="col-12 my-3 d-flex justify-content-center gap-4">

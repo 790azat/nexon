@@ -1,6 +1,6 @@
 @extends('admin-layout')
 
-@section('edit-categories')
+@section('content')
     <div class="container-fluid px-4">
         <h1 class="mt-4">Edit categories</h1>
         <ol class="breadcrumb mb-4">

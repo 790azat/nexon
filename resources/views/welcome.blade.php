@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('monster')
+@section('content')
 
     <!-- Header-->
     <header class="bg-dark py-1">
@@ -15,9 +15,6 @@
             </div>
         </div>
     </header>
-@endsection
-
-@section('items')
 
     <div class="container">
         <div class="d-sm-none container mt-4">

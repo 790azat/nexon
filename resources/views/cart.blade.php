@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('cart')
+@section('content')
     <div class="container my-5">
         <div class="col-10 p-2 shadow mx-auto d-flex justify-content-center flex-wrap">
             <div class="col-11 my-4 mx-auto d-flex gap-1 flex-wrap">
