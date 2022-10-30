@@ -48,7 +48,8 @@ class CartController extends Controller
                 'image' => $request->image,
             )
         ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
+
+        alert('success','Ապրանքը ավելացված է զամբյուղ');
 
         return redirect()->route('welcome');
     }

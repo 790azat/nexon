@@ -18,7 +18,7 @@
         <div class="container px-4 px-lg-5">
             <a href="/" class="d-flex ms-2">
                 <div class="me-2 d-flex justify-content-center align-items-center" style="width: 30px">
-                    <img src="orange.png" width="100%" alt="">
+                    <img src="{{asset('orange.png')}}" width="100%" alt="">
                 </div>
                 <div class="col-auto d-flex justify-content-center align-content-center">
                     <p class="fw-bold text-dark my-auto" style="font-size: 26px">Nexon</p>
@@ -26,46 +26,24 @@
             </a>
 
 
-            @if(\Illuminate\Support\Facades\Route::currentRouteName() !== 'welcome')
-                <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                        @endif
 
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                <!-- Authentication Links -->
+                @guest
+                    <ul class="navbar-nav ms-auto d-inline-flex align-items-center gap-2">
+                        <li class="nav-item d-inline-flex align-items-center">
+                            <a class="nav-link text-hover" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right me-1"></i> {{ __('Մուտք') }}</a>
                         </li>
-                    @endguest
-                </ul>
-            @else
-                @if(Auth::check())
+                        <li class="nav-item d-inline-flex align-items-center">
+                            <a class="nav-link text-hover" href="{{ route('register') }}"><i class="bi bi-person-check me-1"></i> {{ __('Գրանցվել') }}</a>
+                        </li>
+                    </ul>
+                @endguest
+
+                @auth
                     <a href="@if(Cart::getTotalQuantity() > 0 ) /cart @else ?alert=empty @endif" class="ms-auto fs-3 d-flex align-items-center">
-                        <button type="button" class="btn btn-outline-secondary position-relative">
-                            <i class="bi bi-cart3" ></i> @if(Cart::getTotalQuantity() > 0)<span class="badge bg-danger m-0 p-1">{{ Cart::getTotalQuantity()}}<span class="visually-hidden">unread messages</span>@endif</span>
+                        <button type="button" class="btn btn-outline-secondary position-relative d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-cart3 fs-6"></i> @if(Cart::getTotalQuantity() > 0) <span class="text-bg-danger p-1 d-flex justify-content-center align-items-center rounded-circle" style="font-size: 10px;line-height:12px;width: 20px;height: 20px"> {{ Cart::getTotalQuantity()}}</span>@endif</span>
                         </button>
                     </a>
 
@@ -73,26 +51,24 @@
                         <div class="dropdown">
                             <button class="btn btn-outline-secondary dropdown-toggle d-inline-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="d-inline-flex">
-                                    <img src="https://avatars.dicebear.com/api/bottts/{{Auth::user()->name}}0.svg" style="width: 20px" alt="">
+                                    <i class="bi bi-person-fill"></i>
                                 </div>
                                 {{Auth::user()->name}}
                             </button>
                             <ul class="dropdown-menu">
-                                @if(\Illuminate\Support\Facades\Route::is('welcome') and isAdmin())
+                                @if(isAdmin())
                                     <li><a class="dropdown-item" href="/admin"><i class="bi bi-speedometer me-1"></i> Admin panel</a></li>
                                 @endif
-                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left me-1"></i> Log out</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left me-1"></i> Log out</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </ul>
                         </div>
                     </div>
-                @else
-                    <a class="btn btn-outline-secondary ms-auto" href="{{ route('home') }}">Login / Register</a>
-                @endif
-            @endif
+                @endauth
+
 
 
 

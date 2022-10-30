@@ -65,7 +65,7 @@
                                 <div class="col-12 pb-3 d-flex justify-content-center">
                                     @if(!\Illuminate\Support\Facades\Auth::check())
                                         <a href="/home">
-                                            <button class="px-4 py-2 text-white btn btn-success">Ավելացնել</button>
+                                            <button class="px-4 py-2 text-white btn btn-success" onclick="playSound();">Ավելացնել</button>
                                         </a>
                                     @else
                                         <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">

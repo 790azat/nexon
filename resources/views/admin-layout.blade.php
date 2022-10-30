@@ -34,24 +34,18 @@
 {{--            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>--}}
 {{--        </div>--}}
 {{--    </form>--}}
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2 border rounded py-1" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://avatars.dicebear.com/api/bottts/{{Auth::user()->name}}0.svg" style="width: 30px" alt="">
-                {{Auth::user()->name}}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li>
-                    <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left me-1"></i> Log out</a>
-                </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </ul>
-        </li>
-    </ul>
+{{--    <!-- Navbar-->--}}
+    <div class="navbar-nav ms-auto me-3 me-lg-4">
+        <a href="{{ route('logout') }}" onclick="
+                            event.preventDefault();
+                            document.getElementById('logout-form').submit();
+                            ">
+            <i class="bi bi-box-arrow-left me-1"></i> Log out</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
+
 </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
