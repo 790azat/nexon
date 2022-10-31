@@ -21,14 +21,12 @@
                             <button id="addButton{{$item->id}}" class="btn btn-success">+</button>
                         </div>
                         <div class="col-1 mx-2">
-{{--                            <p class="text-center">Քանակ</p>--}}
                             <input readonly type="number" id="quantity{{$item->id}}" value="{{$item->quantity}}" class="form-control">
                         </div>
 
                         <script>
                             $(document).ready(function(){
                                 let counter = $('#quantity{{$item->id}}').val();
-                                counter++ ;
                                 $('#quantity{{$item->id}}').val(counter);
                                 let price = {{ $item->price }};
                                 let x = price * counter

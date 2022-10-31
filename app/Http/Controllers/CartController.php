@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -29,9 +31,9 @@ class CartController extends Controller
         $items = json_decode(json_encode($items));
 
         if ($array == null) {
-            return redirect()->route('welcome');
+            alert('warning','Զամբյուղը դատարկ է');
+            return back();
         }
-
 
         return view('cart', ['items' => $items]);
     }

@@ -12,7 +12,6 @@
 
     <!-- Alert -->
     @include('alert')
-
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg shadow">
         <div class="container px-4 px-lg-5">
