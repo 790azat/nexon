@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::post('/card',[BuyController::class,'card']);
 
+
     //Product card routes
 
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
@@ -40,13 +41,11 @@ Route::middleware([IsAdmin::class])->group(function () {
 
     Route::get('/admin', [ItemsController::class, 'admin'])->name('admin');
 
-    Route::get('/add', function () {return view('add');});
-
     Route::post('/save', [ItemsController::class, 'save'])->name('save');
 
     Route::post('/edit', [ItemsController::class, 'edit'])->name('edit');
 
-    Route::post('/save-category', [ItemsController::class, 'save_category']);
+    Route::post('/save-category', [ItemsController::class, 'save_category'])->name('save-category');
 
     Route::get('/delete/{id}', [ItemsController::class, 'delete'])->name('delete');
 

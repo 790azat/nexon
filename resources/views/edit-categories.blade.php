@@ -32,17 +32,23 @@
                             <div class="d-flex justify-content-center align-items-start flex-wrap">
                                 <div class="mb-3 col-10 mx-auto">
                                     <label for="exampleFormControlInput1" class="form-label">Category name</label>
-                                    <input required type="text" class="form-control" id="exampleFormControlInput1" name="name">
+                                    <input required type="text" class="form-control" id="name" name="name">
                                 </div>
                                 <div class="mb-3 col-10 mx-auto">
                                     <label for="exampleFormControlInput2" class="form-label">Icon</label>
-                                    <input required type="text" class="form-control" id="exampleFormControlInput2" name="icon">
+                                    <input required type="text" class="form-control" id="icon" name="icon">
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success px-4" value="Save">
                             </div>
                         </form>
+                        <div id="btn-submit" class="btn btn-success px-4">Button</div>
+
+{{--                        @include('ajax')--}}
+
+                        {{ajax('btn-submit','/save-category',['name' => 'name','icon' => 'icon'])}}
+
                     </div>
 
                 </div>
