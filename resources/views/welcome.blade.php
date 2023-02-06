@@ -3,13 +3,27 @@
 @section('content')
     <div class="col-12 mt-5">
         <div class="container">
-            <div class="col-6 mx-auto d-flex justify-content-center align-items-center gap-4">
-                <div class="col-3">
-                    <img src="{{ asset('images/shop.png') }}" style="width: 100%" alt="">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    @foreach($categories as $category)
+                        <button type="button" class="btn btn-primary"><a href="/category/{{ $category->name }}">{{ ucfirst($category->name) }}</a></button>
+                    @endforeach
                 </div>
-                <div class="col-9">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis consectetur consequuntur cum cumque dolorem doloremque hic iusto magni nam optio, pariatur placeat quibusdam quis quisquam, ratione sint unde vero?</p>
-                </div>
+            </div>
+            <div class="col-12 d-flex flex-wrap row-cols-4 mt-3">
+                @foreach($items as $item)
+                    <a href="" class="col shadow-sm rounded-1 p-3">
+                        <div class="col-12">
+                            <img src="{{ $item->image }}" style="width: 100%" alt="">
+                        </div>
+                        <div class="col-12 mt-4">
+                            <p class="text-center fw-bold">{{ $item->name }}</p>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <p class="text-center">{{ $item->price }} AMD</p>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>

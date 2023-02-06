@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PagesController;
+use App\Models\Category;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','welcome')->name('welcome');
+Route::get('/reset',function () {
+    Artisan::call('db:wipe');
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+    return redirect('/');
+});
+
+Route::get('/',[PagesController::class,'index'])->name('welcome');
+Route::get('/category/{name}',[PagesController::class,'category']);
 
 Auth::routes();
 
