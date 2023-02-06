@@ -28,7 +28,7 @@
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="{{ route('home') }}"><i class="fa-solid fa-home me-1"></i> Home</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
