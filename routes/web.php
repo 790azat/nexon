@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +29,6 @@ Route::get('/category/{name}',[PagesController::class,'category']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/register-company','auth.register-company')->name('register-company');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -24,7 +24,7 @@
             @auth
                 <div class="d-flex ms-4 align-items-center">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-success"><a href="{{ route('home') }}"><i class="fa-solid fa-user me-1"></i> {{ Auth::user()->name }}</a></button>
+                        <button type="button" class="btn btn-success"><a href="{{ route('home') }}">@if(Auth::user()->type == 0) <i class="fa-solid fa-user me-1"></i> @else <i class="fa-solid fa-shop me-1"></i> @endif {{ Auth::user()->name }}</a></button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>

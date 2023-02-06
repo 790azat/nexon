@@ -16,14 +16,13 @@
 
                             <div class="col-md-6">
                                 <div class="btn-group">
-                                    <input type="radio" class="btn-check" name="type" id="option1" value="0" autocomplete="off" checked />
-                                    <label class="btn btn-secondary" for="option1">User</label>
-
-                                    <input type="radio" class="btn-check" name="type" id="option2" value="1" autocomplete="off" />
-                                    <label class="btn btn-secondary" for="option2">Company</label>
+                                    <button class="btn btn-secondary active"><a href="{{ route('register') }}">User</a></button>
+                                    <button class="btn btn-secondary"><a href="{{ route('register-company') }}">Company</a></button>
                                 </div>
                             </div>
                         </div>
+
+                        <input type="number" value="0" name="type" class="d-none">
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -33,8 +32,8 @@
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>

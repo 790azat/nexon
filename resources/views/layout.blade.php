@@ -14,5 +14,11 @@
     @include('components.header')
     @yield('content')
     @livewireScripts
+    @if(1)
+        <script type="module">
+            import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+        </script>
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+    @endif
 </body>
 </html>
