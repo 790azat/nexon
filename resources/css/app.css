@@ -1,0 +1,8 @@
+a {
+    text-decoration: none !important;
+    color: unset !important;
+    display: block !important;
+}
+p {
+    margin: 0 !important;
+}
